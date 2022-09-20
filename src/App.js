@@ -1,21 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
-import Carousel from 'react-bootstrap/Carousel';
-
-
+import {Carousel, Container, Row, Col, Figure} from 'react-bootstrap';
+import ulsanImg from './images/Ulsan_Hyundai_FC.svg.png';
+import jejuImg from "./images/Jeju_United_FC.svg.png";
+import { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 
 function App() {
+  let [showLogo, setShowLogo] = useState([ulsanImg, jejuImg]);
+  let navigate = useNavigate();
   return (
     <div className="App">
       <div className='header-minbar'>
         <span>로그인</span>|<span>회원가입</span>
       </div>
       <div className='header-bar'>
-        <div className='k-logo'></div>
-        <div className='team-logo'>
-          <div className='ulsan'></div>
-          <div className='jeju'></div>
-        </div>
+        <div className='k-logo' onClick={()=>{
+          navigate('/');
+        }}/>
+        <Container style={{display:'flex', justifyContent:'flex-end'}}>
+          <Row xs="auto">
+            {showLogo.map((data, i)=>{
+              return (
+                <Col style={{display:'flex', alignItems: 'center'}}>
+                  <img src={data} style={{width:'40px', height:'40px', cursor:'pointer'}} onClick={()=>{
+                    navigate("/");
+                  }}/>
+                </Col>
+              )
+            })}
+          </Row>
+        </Container>
       </div>
       <div className="header-menubar">
         <ul style={{listStyleType: "none", display:'flex',flexDirection:'row' , justifyContent:'space-around', color:'white', padding:'10px 0', margin:"0"}}>
@@ -56,9 +71,7 @@ function App() {
             <p>뉴스</p>
           </div>
         </div>
-        
-      </div>
-      
+      </div>   
     </div>
   );
 }
