@@ -1,10 +1,11 @@
 * {
   height: auto;
+  /* background-color: rgb(241, 234, 234); */
 }
 .header-minbar {
   width: 100%;
   height: 25px;
-  background-color: rgb(233, 227, 227);
+  background-color: rgb(241, 235, 235);
   margin: 0 auto;
   padding: 0;
   text-align: right;
@@ -12,6 +13,7 @@
 .header-bar{
   display: flex;
   justify-content: space-between;
+  /* background-color: white; */
 }
 .team-logo{
   display: flex;
@@ -59,20 +61,19 @@
 }
 .aside-left{
   width: 40%;
-  height: 100%;
-  background-color: rgb(243, 233, 233);
+  background-color: rgb(241, 235, 235);
 }
 .aside-right {
   width: 60%;
+  background-color: rgb(241, 235, 235);
 }
 .rankTextbar {
   width: 100%;
-  height: 18%;
+  height: 15%;
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
-
 }
 .rankTextbar p {
   font-size: 25px;
@@ -87,6 +88,19 @@
   background-repeat: no-repeat;
   background-position: center;
   margin-left: 15px;
+}
+.newsTextbar {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+.newsTextbar p {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0;
 }
 
 

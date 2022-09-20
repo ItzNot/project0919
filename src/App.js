@@ -47,10 +47,15 @@ function App() {
             <p>팀 순위</p>
           </div>
           <div className='rankImage'>
-            
+
           </div>
         </div>
-        <div className='aside-right'></div>
+        <div className='aside-right'>
+          <div className='newsTextbar'>
+            <div className='ballImage'/>
+            <p>뉴스</p>
+          </div>
+        </div>
         
       </div>
       
