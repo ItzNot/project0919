@@ -37,7 +37,7 @@ function App() {
         </Carousel.Item>
         <Carousel.Item>
         <h3>Third slide label</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <p>Praesen cursus magna, vel scelerisque nisl consectetur.</p>
         </Carousel.Item>
       </Carousel>
       <div className='mid-site'>
