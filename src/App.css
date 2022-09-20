@@ -1,6 +1,5 @@
 * {
   height: auto;
-  /* background-color: rgb(241, 234, 234); */
 }
 .header-minbar {
   width: 100%;
@@ -87,6 +86,11 @@
   font-size: 25px;
   font-weight: bold;
   margin: 0;
+}
+.infoText {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
 }
 
 
