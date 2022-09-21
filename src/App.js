@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import {Carousel, Container, Row, Col} from 'react-bootstrap';
+import {Carousel, Container, Row, Col, Dropdown} from 'react-bootstrap';
 import ulsanImg from './images/Ulsan_Hyundai_FC.svg.png';
 import jejuImg from "./images/Jeju_United_FC.svg.png";
-import { useState } from "react";
+import klogo from "./images/AKR20201105144800007_01_i_P4.jpg";
+import { useState, useEffect } from "react";
 import {useNavigate, Routes, Route, Link} from 'react-router-dom';
-import TeamInfo from './Components/TeamInfo.js';
+import searchIcon from './images/3844432_magnifier_search_zoom_icon.png';
 
 function App() {
   // let [showLogo, setShowLogo] = useState([ulsanImg, jejuImg]);
@@ -24,6 +24,28 @@ function App() {
 
   ])
   let navigate = useNavigate();
+  const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장
+  const [ScrollActive, setScrollActive] = useState(false);
+  function handleScroll() {
+    if (ScrollY > 75) {
+      setScrollY(window.pageYOffset);
+      setScrollActive(true);
+    } else {
+      setScrollY(window.pageYOffset);
+      setScrollActive(false);
+    }
+  }
+  useEffect(() => {
+    function scrollListener() {
+      window.addEventListener("scroll", handleScroll);
+    } //  window 에서 스크롤을 감시 시작
+    scrollListener(); // window 에서 스크롤을 감시
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }; //  window 에서 스크롤을 감시를 종료
+  });
+
+  
   return (
     <div className="App">
       <div className='header-minbar'>
@@ -37,7 +59,7 @@ function App() {
               return (
                 <Col style={{display:'flex', alignItems: 'center'}}>
                   <img src={data.imgPath} style={{width:'40px', height:'40px', cursor:'pointer'}} onClick={()=>{
-                    navigate('/TeamInfo/'+data.id);
+                    navigate(data.id);
                   }}/>
                 </Col>
               )
@@ -46,67 +68,94 @@ function App() {
         </Container>
       </div>
       <div className="header-menubar">
-        <ul style={{listStyleType: "none", display:'flex',flexDirection:'row' , justifyContent:'space-around', color:'white', padding:'10px 0', margin:"0"}}>
-          <li>뉴스</li>
-          <li>영상</li>
-          <Link to='/TeamInfo' style={{textDecoration:'none', color:'white'}}><li>팀 소개</li></Link> 
-          <li>이벤트</li>
-          <li>About K League</li>
-          <li>검색</li>
-        </ul>
+        <ul className={ScrollActive ? "fixed-menu" : "menu"}>
+            {ScrollActive ? <img src={klogo} style={{width:'32px', height:'32px', float:'left', cursor:'pointer'}} onClick={()=>{
+              navigate('/');
+            }}></img> : null}
+            <li><a>뉴스</a>
+            <ul className='down-menu'>
+              <li>1-1</li>
+              <li>1-2</li>
+              <li>1-1</li>
+            </ul>
+          </li>
+          <li><a>영상</a>
+            <ul className='down-menu'>
+              <li>2-1</li>
+              <li>2-2</li>
+            </ul>
+          </li>
+          <li><a>팀 소개</a>
+            <ul className='down-menu'>
+              <li>3-1</li>
+              <li>3-2</li>
+              <li>3-3</li>
+              <li>3-4</li>
+            </ul>
+          </li>
+          <li><a>이벤트</a>
+          <ul className='down-menu'>
+              <li>4-1</li>
+              <li>4-2</li>
+              <li>4-3</li>
+              <li>4-4</li>
+            </ul>
+          </li>
+          <li style={{width:"18rem"}}>About K League</li>
+          <img src={searchIcon} style={{width:'32px', height:'32px', cursor:'pointer', float:'right' ,marginRight:'20px'}}></img>
+          </ul>
       </div>
       <Routes>
         <Route path='/' element={
           <div>
             <Carousel style={{width:'100%', height:'400px'}}>
-            <Carousel.Item>
-              <div className='eventBanner1'></div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Item>
-            <Carousel.Item>
-              <h3>Third slide label</h3>
-              <p>Praesen cursus magna, vel scelerisque nisl consectetur.</p>
-            </Carousel.Item>
-          </Carousel>
-          <div className='mid-site'>
-            <div className='aside-left'>
-              <div className='rankTextbar'>
-                <div className='ballImage'/>
-                <p>팀 순위</p>
+              <Carousel.Item>
+                <div className='eventBanner1'></div>
+              </Carousel.Item>
+              <Carousel.Item>
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </Carousel.Item>
+              <Carousel.Item>
+                <h3>Third slide label</h3>
+                <p>Praesen cursus magna, vel scelerisque nisl consectetur.</p>
+              </Carousel.Item>
+            </Carousel>
+            <div className='mid-site'>
+              <div className='aside-left'>
+                <div className='rankTextbar'>
+                  <div className='ballImage'/>
+                  <p>팀 순위</p>
+                </div>
+              </div>
+              <div className='aside-right'>
+                <div className='newsTextbar'>
+                  <div className='ballImage'/>
+                  <p>뉴스</p>
+                </div>
+                <Container>
+                  <Row style={{width:'100%', height:'300px', backgroundColor:'black', margin:'5px'}}>
+                    <Col>
+                    1 of 2
+                    </Col>
+                  </Row>
+                <Row style={{width:'100%', height:'80px', backgroundColor:'blue', margin:'5px'}}>
+                  <Col style={{marginRight:'5px'}}>1 of 3</Col>
+                  <Col style={{marginRight:'5px'}}>2 of 3</Col>
+                  <Col style={{marginRight:'5px'}}>3 of 3</Col>
+                </Row>
+                </Container>
               </div>
             </div>
-            <div className='aside-right'>
-              <div className='newsTextbar'>
-                <div className='ballImage'/>
-                <p>뉴스</p>
-              </div>
-            </div>
-          </div>
           </div>  
         }/>
-        <Route path='/TeamInfo' element={
-          <div className='infoText'>
-            <h3>팀 소개 페이지입니다.</h3>
-            <Container>
-              <Row sm={1} md={4}>
-              {showTeam.map((data, i)=>{
-              return (
-                <TeamInfo showTeam={showTeam} team={data} i={i}/>
-              )
-            })}
-              </Row>
-            </Container>
-            </div>
-        }/>
-        <Route path='/TeamInfo/teamUlsan' element={
-          <div>
+        
+        <Route path='/teamUlsan' element={
+          <div style={{height:'3000px', width:'100%'}}>
             <h1>asdsad</h1>
           </div>
         }/>
-        <Route path='/TeamInfo/teamJeju' element={
+        <Route path='/teamJeju' element={
           <div>
             456
           </div>
@@ -116,6 +165,6 @@ function App() {
     </div>
   );
 }
-
-
 export default App;
+
+
