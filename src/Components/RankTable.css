@@ -1,0 +1,24 @@
+.RankTable {
+    width: 90%;
+    text-align: center;
+    border: 1px solid rgb(209, 199, 199);
+    float: right;
+    margin: 20px;
+}
+.RankTable th, td {
+    padding: 10px;
+    vertical-align: center;
+    text-align: center;
+}
+.RankHeadTable {
+    background-color: gray;
+}
+.backArea {
+    background-color: white;
+    width: 100%;
+    height: 300px;
+}
+img {
+    width: 48px;
+    height: 48px;
+}
