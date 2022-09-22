@@ -42,7 +42,7 @@ function EventPage({evenBanner1}) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
+                            <td>3</td>
                             <td>마감</td>
                             <td>2022 K리그1 30R 승부예측</td>
                             <td>2022-09-14 08:10 ~ 2022-09-17 11:30</td>
@@ -58,13 +58,14 @@ function EventPage({evenBanner1}) {
                             <td>-</td>
                         </tr>
                         <tr>
-                            <td>3</td>
+                            <td>1</td>
                             <td>마감</td>
                             <td>2022 K리그1 28R 승부예측</td>
                             <td>2022-08-30 09:00 ~ 2022-09-02 17:00</td>
                             <td>1448</td>
                             <td>-</td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div>
