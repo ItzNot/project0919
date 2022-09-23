@@ -1,18 +1,28 @@
 import './EventPage.css';
-import {Outlet, useNavigate} from 'react-router-dom';
+import {Navigate, Outlet, useNavigate} from 'react-router-dom';
+import { useState } from "react";
 
 
 function EventPage({evenBanner1}) {
-    let navigete = useNavigate();
+    let navigate = useNavigate();
+    let [showInputList, setShowInputList] = useState(false);
+    let [inputTitle, setInputTitle] = useState('');
+    let [inputstartDate, setInputStartDate] =useState('');
+    let [inputFinDate, setInputFinDate] =useState('');
+    let [saveData, setSaveData] = useState([{
+        
+    }]);
+
+    
     return (
         <div>
             <div>
+
                 <div className='bannner-PicBox'>
                     <h3>이벤트</h3>
                     <p>K리그 경기 승부 예측을 할 수 있는 이벤트 페이지입니다.</p>
                 </div>
             </div>
-            <Outlet/>
             <div className="main-PicArea">
                 <img src={evenBanner1} style=
                 {{
@@ -41,40 +51,68 @@ function EventPage({evenBanner1}) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>3</td>
-                            <td>마감</td>
-                            <td>2022 K리그1 30R 승부예측</td>
-                            <td>2022-09-14 08:10 ~ 2022-09-17 11:30</td>
-                            <td>1440</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>마감</td>
-                            <td>2022 K리그1 29R 승부예측</td>
-                            <td>2022-09-06 10:15 ~ 2022-09-10 11:30</td>
-                            <td>1681</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>마감</td>
-                            <td>2022 K리그1 28R 승부예측</td>
-                            <td>2022-08-30 09:00 ~ 2022-09-02 17:00</td>
-                            <td>1448</td>
-                            <td>-</td>
-                        </tr>
-                        
+                        {saveData.map((data, i)=> {
+                            
+                            return(
+                                <tr>
+                                <td>0</td>
+                                <td>마감</td>
+                                <td>{data.title}</td>
+                                <td>{data.startDate} ~ {data.finDate}</td>
+                                <td>0</td>
+                                <td>-</td>
+                            </tr> 
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
             <div className="bottomCreateText">
                 <button className="createTextbutton" onClick={()=>{
-                    window.location.href = '/EventPage/CreateText'
+                    // setShowInputList(true);
+                    // localStorage.clear();
+                    navigate("/EventPage/CreateText")
                 }}>글쓰기</button>
 
             </div>
+            {/* {showInputList ? 
+            <div>
+            <div className='BodyArea'>
+                <div className='BodyInputArea'>
+                    <div className='textTitle'>
+                        글 제목 : <input type='text' id='titleId' onChange={(e)=>{
+                            setInputTitle(e.target.value);
+                        }}></input>
+                    </div>
+                    <div className='eventDate'>
+                        참여 기간 : <input type='date' id='startDateId' onChange={(e1)=>{
+                            setInputStartDate(e1.target.value);
+                        }}/>
+                        까지 : <input type='date' id='finishDateId' onChange={(e2)=>{
+                            setInputFinDate(e2.target.value);
+                        }}/>
+                    </div>
+                    <button id='finButton' onClick={(e)=>{
+                        
+                        e.preventDefault();
+                        localStorage.setItem('json', JSON.stringify({title:inputTitle, startDate:inputstartDate, finDate:inputFinDate}));
+                        const keys = Object.keys(localStorage);
+                        for (const key of keys) {
+                            let temp = [...saveData];
+                            temp.unshift(JSON.parse(localStorage.getItem('json')));
+                            setSaveData(temp);
+                        };
+                        setShowInputList(false);
+                        
+                    }}>완료</button>
+                </div>
+                <div className='bodyText'>
+                    <label for='bodyText'>
+                        <textarea id='bodyTextId' placeholder='글 내용 작성'></textarea>
+                    </label>
+                </div>
+            </div>
+        </div> : null} */}
 
         </div>        
 
