@@ -1,15 +1,15 @@
 import './EventPage.css';
-import {useNavigate} from 'react-router-dom';
-import { useState } from "react";
+import {json, useNavigate} from 'react-router-dom';
+import { useState, useEffect } from "react";
 function CreateText() {
     let navigate = useNavigate();
     let [inputTitle, setInputTitle] = useState('');
-    let [inputstartDate, setInputStartDate] =useState('');
-    let [inputFinDate, setInputFinDate] =useState('');
-    let [saveData, setSaveData] = useState([{}]);
+    let [inputstartDate, setInputStartDate] =useState(0);
+    let [inputFinDate, setInputFinDate] =useState(0);
+    let [saveData, setSaveData] = useState([]);
     let [cloneList, setClonList] = useState([]);
-    
 
+    
     
     return (
         <div>
@@ -30,16 +30,44 @@ function CreateText() {
                         }}/>
                         까지 : <input type='date' id='finishDateId' onChange={(e2)=>{
                             setInputFinDate(e2.target.value);
+                            
                         }}/>
-                    </div>
-                    <button id='finButton' onClick={(e)=>{
+                        <button id='finButton' onClick={(e)=>{
                         e.preventDefault();
-                        localStorage.setItem('json', JSON.stringify([{title:inputTitle, startDate:inputstartDate, finDate:inputFinDate}]));
-                        localStorage.setItem('json1', JSON.stringify());
-                        
-                        
-                        navigate('/EventPage');
+                        //저장된 값 가져오고 (localStorage)
+                        let tempData = JSON.parse(localStorage.getItem('json'));
+                        if(tempData==null) tempData = [];                        
+                        //새로운 객체를 만들고
+                        //앞에 unshift 로 넣고
+                        tempData.unshift({title:inputTitle, startDate:inputstartDate, finDate:inputFinDate});
+                        //다시 저장하기 (localStorage)
+                        setSaveData(tempData);
+                        if(inputFinDate < inputstartDate) {
+                            alert('날짜를 다시 입력하세요');
+                        }
+                        else if(inputTitle == '') {
+                            alert('제목을 입력하세요.');
+                        }
+                        else if(inputFinDate == 0 || inputstartDate == 0) {
+                            alert('날짜가 설정되지 않았습니다.');
+                        }
+                        else {
+                            localStorage.setItem('json', JSON.stringify(tempData));
+                            navigate('/EventPage');
+
+                        }
+                        // localStorage.setItem('json', JSON.stringify([{title:inputTitle, startDate:inputstartDate, finDate:inputFinDate}]));
+                        // let saveStorage = JSON.parse(localStorage.getItem('json'));
+                        // let temp6 = [...saveData];
+                        // temp6.unshift(saveStorage);
+                        // console.log(temp6);
+                        // setSaveData(temp6);
+                        // localStorage.setItem('json', JSON.stringify(saveData));
+
                     }}>완료</button>
+                    </div>
+                    {/* <BtnSData></BtnSData> */}
+                    
                 </div>
                 <div className='bodyText'>
                     <label for='bodyText'>
@@ -49,6 +77,26 @@ function CreateText() {
             </div>
         </div>
     )
+    // function BtnSData() {
+    //     let [sData, setSData] = useState(()=>
+    //     JSON.parse(localStorage.getItem('json')));
+
+    //     useEffect(()=> {
+    //         localStorage.setItem('json', JSON.stringify([{title:inputTitle, startDate:inputstartDate, finDate:inputFinDate}]));
+    //     }, [sData])
+    //     return(
+    //         <button id='finButton' onClick={(e)=>{
+    //             // e.preventDefault();
+                
+    //             let saveStorage = JSON.parse(localStorage.getItem('json'));
+    //             // let temp6 = [...saveData];
+    //             // temp6.unshift(saveStorage);
+    //             // setSaveData(temp6);
+    //             // localStorage.setItem('json', JSON.stringify(saveData));
+    //             navigate('/EventPage');
+    //         }}>완료</button>
+    //     )
+    // }
 }
 
 export default CreateText;

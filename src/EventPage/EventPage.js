@@ -1,6 +1,6 @@
 import './EventPage.css';
 import {Navigate, Outlet, useNavigate} from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 function EventPage({evenBanner1}) {
@@ -9,11 +9,13 @@ function EventPage({evenBanner1}) {
     let [inputTitle, setInputTitle] = useState('');
     let [inputstartDate, setInputStartDate] =useState('');
     let [inputFinDate, setInputFinDate] =useState('');
-    let [saveData, setSaveData] = useState([{
-        
-    }]);
-
-    
+    let evenData = JSON.parse(localStorage.getItem('json'));
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth()+1;
+    let day = today.getDate();
+    let comToday = new Date(`${year}-${month}-${day}`);
+    if(evenData==null) evenData = []; 
     return (
         <div>
             <div>
@@ -48,15 +50,16 @@ function EventPage({evenBanner1}) {
                             <th>참여기간</th>
                             <th>참여인원</th>
                             <th>결과</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        {saveData.map((data, i)=> {
-                            
+                        {evenData.map((data, i)=> {
+                            let endDay = new Date(data.finDate);
                             return(
                                 <tr>
-                                <td>0</td>
-                                <td>마감</td>
+                                <td>{evenData.length-i}</td>
+                                <td style={{backgroundColor:'gray', color:'white'}}>{endDay < comToday ? "마감" : "진행"}</td>
                                 <td>{data.title}</td>
                                 <td>{data.startDate} ~ {data.finDate}</td>
                                 <td>0</td>
@@ -64,6 +67,17 @@ function EventPage({evenBanner1}) {
                             </tr> 
                             )
                         })}
+                        <tr style={{borderTop:'20px solid rgb(241, 235, 235)'}}>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td onClick={()=>{
+                                localStorage.clear();
+                                navigate("/EventPage");
+                            }}><button>일괄삭제</button></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -93,7 +107,6 @@ function EventPage({evenBanner1}) {
                         }}/>
                     </div>
                     <button id='finButton' onClick={(e)=>{
-                        
                         e.preventDefault();
                         localStorage.setItem('json', JSON.stringify({title:inputTitle, startDate:inputstartDate, finDate:inputFinDate}));
                         const keys = Object.keys(localStorage);
@@ -103,7 +116,6 @@ function EventPage({evenBanner1}) {
                             setSaveData(temp);
                         };
                         setShowInputList(false);
-                        
                     }}>완료</button>
                 </div>
                 <div className='bodyText'>
@@ -112,12 +124,11 @@ function EventPage({evenBanner1}) {
                     </label>
                 </div>
             </div>
-        </div> : null} */}
+                </div> : null} */}
 
         </div>        
-
     )
-    
 }
+
 
 export default EventPage;

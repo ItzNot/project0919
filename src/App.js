@@ -2,7 +2,7 @@ import './App.css';
 import {Carousel, Container, Row, Col, Dropdown, Table} from 'react-bootstrap';
 import ulsanImg from './images/Ulsan_Hyundai_FC.svg.png';
 import jejuImg from "./images/Jeju_United_FC.svg.png";
-import klogo from "./images/AKR20201105144800007_01_i_P4.jpg";
+import k_logoMini from "./images/456.PNG";
 import suwonImg from './images/emblem_K29.png';
 import evenBanner1 from './images/디자인_배너.PNG';
 import evenBanner2 from './images/KakaoTalk_20220901_160223206_01_20220902_023758.png';
@@ -10,8 +10,10 @@ import evenBanner3 from './images/KakaoTalk_20220316_113356537_20220316_050246.p
 import { useState, useEffect } from "react";
 import {useNavigate, Routes, Route, Link, Outlet} from 'react-router-dom';
 import searchIcon from './images/3844432_magnifier_search_zoom_icon.png';
+import arrowIcon from './images/free-icon-right-arrow-5166492.png';
+import wideNewsPic from './images/뉴스(큰화면).PNG';
 import RankTable from './Components/RankTable.js';
-import UlsanPage from './Components/UlsanPage.js';
+import UlsanPage from './IntroPage/UlsanPage.js';
 import k_logo from "./images/123.JPG";
 import EventPage from "./EventPage/EventPage.js";
 import CreateText from './EventPage/CreateText';
@@ -103,7 +105,7 @@ function App() {
       </div>
       <div className="header-menubar">
         <ul className={ScrollActive ? "fixed-menu" : "menu"}>
-            {ScrollActive ? <img src={klogo} style={{width:'32px', height:'32px', float:'left', cursor:'pointer'}} onClick={()=>{
+            {ScrollActive ? <img src={k_logoMini} style={{width:'32px', height:'32px', float:'left', cursor:'pointer'}} onClick={()=>{
               window.location.href = '/';
             }}></img> : null}
             <li><a>뉴스</a>
@@ -121,20 +123,17 @@ function App() {
           </li>
           <li><a>팀 소개</a>
             <ul className='down-menu'>
-              <li>3-1</li>
-              <li>3-2</li>
-              <li>3-3</li>
-              <li>3-4</li>
+              <li>울산 현대</li>
+              <li>제주 유나이티드</li>
+              <li>수원FC</li>
             </ul>
           </li>
           <li><a style={{cursor:'pointer'}} onClick={()=>{
             window.location.href = '/EventPage';
           }}>이벤트</a>
           <ul className='down-menu'>
-              <li>4-1</li>
-              <li>4-2</li>
-              <li>4-3</li>
-              <li>4-4</li>
+              <li>승부 예측</li>
+              <li>출석 이벤트</li>
             </ul>
           </li>
           <li style={{width:"18rem"}}>About K League</li>
@@ -168,7 +167,23 @@ function App() {
                   <div className='ballImage'/>
                   <p>뉴스</p>
                 </div>
-                
+                <div className='wide-newsArea'>
+                  <img src={wideNewsPic} style={{width:'55%', height:'100%'}}></img>
+                  <div style={{width:'45%', display:'flex', flexDirection:'column', justifyContent:'center', marginLeft:'20px'}}>
+                    <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>CLUB</p>
+                    <strong style={{fontSize:'30px', color:'white'}}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</strong>
+                    <div style={{display:'flex'}}>
+                      <p style={{marginTop:'40px', color:'white'}}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</p>
+                      <span><img src={arrowIcon} style={{float:'right', marginTop:'25px'}}></img></span>
+                    </div>
+                  </div>
+                </div>
+                <div className='list-newsArea'>
+                  <div className='newsbox'></div>
+                  <div className='newsbox'></div>
+                  <div className='newsbox'></div>
+                </div>
+              
               </div>
             </div>
           </div>  
