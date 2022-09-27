@@ -13,7 +13,6 @@ function NewsPage({newsItems}) {
                 <p>K리그1・2의 최신 소식을 모두 확인 할 수 있는 공간입니다.</p>
             </div>
             <Outlet/>
-            
     </div>
     )
 }
