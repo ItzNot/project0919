@@ -39,4 +39,20 @@
     width: 100%;
     height: 500px;
     background-color: rgb(241, 235, 235);
+    display: flex;
+    justify-content: center;
+}
+.body-videolist {
+    width: 100%;
+    height: 500px;
+    background-color: rgb(241, 235, 235);
+    display: flex;
+    flex-direction: row;
+    
+}
+.bottomBtn {
+    width: 100%;
+    background-color: rgb(241, 235, 235);
+    display: flex;
+    justify-content: flex-end;
 }

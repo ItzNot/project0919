@@ -1,5 +1,5 @@
 import './App.css';
-import {Carousel, Container, Row, Col, Tabs, Tab} from 'react-bootstrap';
+import {Carousel, Container, Row, Col, Tabs, Tab, Overlay, Tooltip} from 'react-bootstrap';
 import ulsanImg from './images/Ulsan_Hyundai_FC.svg.png';
 import jejuImg from "./images/Jeju_United_FC.svg.png";
 import k_logoMini from "./images/456.PNG";
@@ -7,7 +7,7 @@ import suwonImg from './images/emblem_K29.png';
 import evenBanner1 from './images/디자인_배너.PNG';
 import evenBanner2 from './images/배너사진2.PNG';
 import evenBanner3 from './images/KakaoTalk_20220316_113356537_20220316_050246.png';
-import { useState, useEffect } from "react";
+import {useRef, useState, useEffect } from "react";
 import {useNavigate, Routes, Route, Link, Outlet} from 'react-router-dom';
 import searchIcon from './images/3844432_magnifier_search_zoom_icon.png';
 import arrowIcon from './images/free-icon-left-arrow-137518.png';
@@ -25,6 +25,9 @@ import NewsPageClub from './NewsPage/NewsPageClub.js';
 import NewsPageNotice from './NewsPage/NewsPageNotice.js';
 import NewsPageLeague from './NewsPage/NewsPageLeague.js';
 import VideoPage from './VideoPage/VideoPage.js';
+import Video001 from './VideoPage/Video001.js';
+import Video002 from './VideoPage/Video002.js';
+
 
 
 function App() {
@@ -84,7 +87,8 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     }; //  window 에서 스크롤을 감시를 종료
   });
-  let [newsItems, setNewsItems] = useState(["home", "club", "notice", "league"]);
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
   return (
     <div className="App">
       <div className='header-minbar'>
@@ -114,7 +118,7 @@ function App() {
               window.location.href = '/';
             }}></img> : null}
             <li><a style={{cursor:'pointer'}} onClick={()=>{
-              navigate('/newsPage');
+              navigate('/newsPage/all');
             }}>뉴스</a>
             <ul className='down-menu menu1'>
               <li><span onClick={()=>{
@@ -151,7 +155,16 @@ function App() {
             </ul>
           </li>
           <li style={{width:"18rem"}}>About K League</li>
-          <img src={searchIcon} style={{width:'32px', height:'32px', cursor:'pointer', float:'right' ,marginRight:'20px'}}></img>
+          <li style={{float:'right'}}><img src={searchIcon} style={{width:'32px', height:'32px', cursor:'pointer'}} ref={target} onClick={()=>setShow(!show)}></img></li>
+          <Overlay target={target.current} show={show} placement="left">
+        {(props) => (
+          <Tooltip id="overlay-example" {...props}>
+            <label>
+              <textarea placeholder='글 내용 작성'></textarea>
+            </label>
+          </Tooltip>
+        )}
+      </Overlay>
           </ul>
       </div>
       <Routes>
@@ -280,7 +293,15 @@ function App() {
         </Route>
         <Route path='/videoPage' element={
           <VideoPage/>
+        }>
+          <Route path='vi001' element={
+          <Video001/>
         }/>
+          <Route path='vi002' element={
+            <Video002 />
+          }/>
+        </Route>
+        
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </div>
