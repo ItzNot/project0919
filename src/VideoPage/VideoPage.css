@@ -1,0 +1,42 @@
+.bannner-PicBox {
+    width: 100%;
+    height: 200px;
+    background-image: url('../images/blue-g0126102fa_1280.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding-left: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.body-title {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    background-color: rgb(241, 235, 235);
+}
+.body-title p {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+}
+.ballImage {
+    width: 50px;
+    height: 30px;
+    background-image: url('../images/축구공.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 15px;
+}
+
+.body-video {
+    width: 100%;
+    height: 500px;
+    background-color: rgb(241, 235, 235);
+}

@@ -130,9 +130,11 @@
   margin-left: 15px;
 }
 .newsTextbar {
-  width: 100%;
+  width: 40%;
   height: 15%;
+  margin-top: 12px;
   display: flex;
+  position: absolute;
   flex-direction: row;
   justify-content: left;
   align-items: center;
@@ -168,6 +170,12 @@
   height: 200px;
   float: left;
   margin-right: 20px;
+  padding-right: 16px;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
 }
 .newsbox:nth-of-type(1) {
   margin-left: 22px;
@@ -191,6 +199,9 @@
   background-position: center;
 }
 
+.menu1 >li {
+  cursor: pointer;
+}
 
 
 

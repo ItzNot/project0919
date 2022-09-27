@@ -1,24 +1,30 @@
 import './App.css';
-import {Carousel, Container, Row, Col, Dropdown, Table} from 'react-bootstrap';
+import {Carousel, Container, Row, Col, Tabs, Tab} from 'react-bootstrap';
 import ulsanImg from './images/Ulsan_Hyundai_FC.svg.png';
 import jejuImg from "./images/Jeju_United_FC.svg.png";
 import k_logoMini from "./images/456.PNG";
 import suwonImg from './images/emblem_K29.png';
 import evenBanner1 from './images/디자인_배너.PNG';
-import evenBanner2 from './images/KakaoTalk_20220901_160223206_01_20220902_023758.png';
+import evenBanner2 from './images/배너사진2.PNG';
 import evenBanner3 from './images/KakaoTalk_20220316_113356537_20220316_050246.png';
 import { useState, useEffect } from "react";
 import {useNavigate, Routes, Route, Link, Outlet} from 'react-router-dom';
 import searchIcon from './images/3844432_magnifier_search_zoom_icon.png';
-import arrowIcon from './images/free-icon-right-arrow-5166492.png';
-import wideNewsPic from './images/뉴스(큰화면).PNG';
+import arrowIcon from './images/free-icon-left-arrow-137518.png';
+import wideNewsPic1 from './images/뉴스(큰화면).PNG';
+import wideNewsPic2 from './images/뉴스1.PNG';
+import wideNewsPic3 from './images/뉴스2.PNG';
 import RankTable from './Components/RankTable.js';
 import UlsanPage from './IntroPage/UlsanPage.js';
 import k_logo from "./images/123.JPG";
 import EventPage from "./EventPage/EventPage.js";
 import CreateText from './EventPage/CreateText';
-
-
+import NewsPage from './NewsPage/NewsPage.js';
+import NewsPageAll from './NewsPage/NewsPageAll.js';
+import NewsPageClub from './NewsPage/NewsPageClub.js';
+import NewsPageNotice from './NewsPage/NewsPageNotice.js';
+import NewsPageLeague from './NewsPage/NewsPageLeague.js';
+import VideoPage from './VideoPage/VideoPage.js';
 
 
 function App() {
@@ -53,7 +59,7 @@ function App() {
     },
     {
       bannerId:'even003',
-      bannerUrl: '/Eventpage/Even3',
+      bannerUrl: '/',
       bannerImgPath: evenBanner3
     }
   ]);
@@ -78,8 +84,7 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     }; //  window 에서 스크롤을 감시를 종료
   });
-
-  
+  let [newsItems, setNewsItems] = useState(["home", "club", "notice", "league"]);
   return (
     <div className="App">
       <div className='header-minbar'>
@@ -108,18 +113,27 @@ function App() {
             {ScrollActive ? <img src={k_logoMini} style={{width:'32px', height:'32px', float:'left', cursor:'pointer'}} onClick={()=>{
               window.location.href = '/';
             }}></img> : null}
-            <li><a>뉴스</a>
-            <ul className='down-menu'>
-              <li>1-1</li>
-              <li>1-2</li>
-              <li>1-1</li>
+            <li><a style={{cursor:'pointer'}} onClick={()=>{
+              navigate('/newsPage');
+            }}>뉴스</a>
+            <ul className='down-menu menu1'>
+              <li><span onClick={()=>{
+                navigate('/newsPage/all');
+              }}>전체</span></li>
+              <li><span onClick={()=>{
+                navigate('/newsPage/club');
+              }}>구단</span></li>
+              <li><span onClick={()=>{
+                navigate('/newsPage/notice');
+              }}>공지</span></li>
+              <li><span onClick={()=>{
+                navigate('/newsPage/league');
+              }}>리그</span></li>
             </ul>
           </li>
-          <li><a>영상</a>
-            <ul className='down-menu'>
-              <li>2-1</li>
-              <li>2-2</li>
-            </ul>
+          <li><a style={{cursor:'pointer'}} onClick={()=>{
+            navigate('/videoPage');
+          }}>영상</a>
           </li>
           <li><a>팀 소개</a>
             <ul className='down-menu'>
@@ -167,23 +181,69 @@ function App() {
                   <div className='ballImage'/>
                   <p>뉴스</p>
                 </div>
-                <div className='wide-newsArea'>
-                  <img src={wideNewsPic} style={{width:'55%', height:'100%'}}></img>
-                  <div style={{width:'45%', display:'flex', flexDirection:'column', justifyContent:'center', marginLeft:'20px'}}>
+                    <Tabs
+                      defaultActiveKey="home"
+                      id="uncontrolled-tab-example"
+                      className="mb-3"
+                      style={{float:'right', marginTop:'90px'}}
+                    >
+                      <Tab eventKey="home" title="CLUB">
+                      <div className='wide-newsArea'>
+                        <img src={wideNewsPic1} style={{width:'55%', height:'100%'}}></img>
+                        <div style={{width:'45%', display:'flex', flexDirection:'column', justifyContent:'center', marginLeft:'20px'}}>
+                          <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>CLUB</p>
+                          <strong style={{fontSize:'30px', color:'white', cursor:'pointer'}} onClick={()=>{
+                            navigate('/newsPage/club');
+                          }}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</strong>
+                          <div style={{display:'flex'}}>
+                            <p style={{marginTop:'40px', color:'white'}}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</p>
+                          </div>
+                        </div>
+                      </div>
+                      </Tab>
+                      <Tab eventKey="profile" title="NOTICE">
+                      <div className='wide-newsArea'>
+                        <img src={wideNewsPic2} style={{width:'55%', height:'100%'}}></img>
+                        <div style={{width:'45%', display:'flex', flexDirection:'column', justifyContent:'center', marginLeft:'20px'}}>
+                          <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>NOTICE</p>
+                          <strong style={{fontSize:'30px', color:'white', cursor:'pointer'}} onClick={()=>{
+                            navigate('/newsPage/notice');
+                          }}>하나원큐 K리그2 2022 41라운드 프리뷰</strong>
+                          <div style={{display:'flex'}}>
+                            <p style={{marginTop:'40px', color:'white'}}>하나원큐 K리그2 2022 41라운드 프리뷰</p>
+                          </div>
+                        </div>
+                      </div>
+                      </Tab>
+                      <Tab eventKey="contact" title="LEAGUE">
+                      <div className='wide-newsArea'>
+                        <img src={wideNewsPic3} style={{width:'55%', height:'100%'}}></img>
+                        <div style={{width:'45%', display:'flex', flexDirection:'column', justifyContent:'center', marginLeft:'20px'}}>
+                          <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>LEAGUE</p>
+                          <strong style={{fontSize:'30px', color:'white', cursor:'pointer'}} onClick={()=>{
+                            navigate('/newsPage/league');
+                          }}>'멀티 골' 김영빈(강원), K리그1 33라운드 MVP</strong>
+                          <div style={{display:'flex'}}>
+                            <p style={{marginTop:'40px', color:'white'}}>'멀티 골' 김영빈(강원), K리그1 33라운드 MVP</p>
+                          </div>
+                        </div>
+                      </div>
+                      </Tab>
+                    </Tabs>
+                <div className='list-newsArea'>
+                  <div className='newsbox'>
                     <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>CLUB</p>
-                    <strong style={{fontSize:'30px', color:'white'}}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</strong>
-                    <div style={{display:'flex'}}>
-                      <p style={{marginTop:'40px', color:'white'}}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</p>
-                      <span><img src={arrowIcon} style={{float:'right', marginTop:'25px'}}></img></span>
-                    </div>
+                    <p style={{fontWeight:'bolder', color:'rgb(2, 0, 80)'}}>[광주] '챔피언' 광주FC, K리그2 새 역사 향한다</p>
+                  </div>
+                  <div className='newsbox'>
+                    <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>NOTICE</p>
+                    <p style={{fontWeight:'bolder', color:'rgb(2, 0, 80)', backgroundColor:'gray', opacity:'0.6'}}>하나원큐 K리그2 2022 41라운드 프리뷰</p>
+                  </div>
+                  <div className='newsbox'>
+                    <p style={{color:'red', fontSize:'12px', fontWeight:'bold'}}>LEAGUE</p>
+                    <p style={{fontWeight:'bolder', color:'rgb(2, 0, 80)'}}>'멀티 골' 김영빈(강원), K리그1 33라운드 MVP</p>
                   </div>
                 </div>
-                <div className='list-newsArea'>
-                  <div className='newsbox'></div>
-                  <div className='newsbox'></div>
-                  <div className='newsbox'></div>
-                </div>
-              
               </div>
             </div>
           </div>  
@@ -201,6 +261,25 @@ function App() {
           <div>
             456
           </div>
+        }/>
+        <Route path='/newsPage' element={
+          <NewsPage/>
+        }>
+          <Route path='all' element={
+            <NewsPageAll />
+          }/>
+          <Route path='club' element={
+            <NewsPageClub />
+          }/>
+          <Route path='notice' element={
+            <NewsPageNotice />
+          }/>
+          <Route path='league' element={
+            <NewsPageLeague />
+          }/>
+        </Route>
+        <Route path='/videoPage' element={
+          <VideoPage/>
         }/>
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
