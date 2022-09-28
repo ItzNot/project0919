@@ -199,6 +199,8 @@
 .menu1 >li {
   cursor: pointer;
 }
-
+#searchtextbar {
+  width: 100px;
+}
 
 

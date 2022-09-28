@@ -74,7 +74,7 @@ function EventPage({evenBanner1}) {
                             <td></td>
                             <td></td>
                             <td onClick={()=>{
-                                localStorage.clear();
+                                localStorage.removeItem('json');
                                 navigate("/EventPage");
                             }}><button>일괄삭제</button></td>
                         </tr>

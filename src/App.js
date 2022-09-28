@@ -27,7 +27,8 @@ import NewsPageLeague from './NewsPage/NewsPageLeague.js';
 import VideoPage from './VideoPage/VideoPage.js';
 import Video001 from './VideoPage/Video001.js';
 import Video002 from './VideoPage/Video002.js';
-
+import SignUp from './registIdPw/SignUp.js';
+import Signin from './registIdPw/Signin.js'
 
 
 function App() {
@@ -89,10 +90,36 @@ function App() {
   });
   const [show, setShow] = useState(false);
   const target = useRef(null);
+  let [showHeaderBar, setShowHeaderBar] = useState(false);
+  let isData = localStorage.getItem('boolData');
+  useEffect(()=>{
+    if(showHeaderBar !== true) {
+      setShowHeaderBar(isData);
+    }
+    
+    console.log('시작');
+  }, [isData])
+
   return (
     <div className="App">
       <div className='header-minbar'>
-        <span>로그인</span>|<span>회원가입</span>
+        {showHeaderBar === isData?
+        <div>
+        <span style={{cursor:'pointer'}} onClick={()=>{
+        localStorage.setItem('boolData', false);
+        setShowHeaderBar(false);
+        }}>로그아웃</span>|<span style={{cursor:'pointer'}}>마이페이지</span>
+      </div>
+        :
+        <div>
+          <span style={{cursor:'pointer'}} onClick={()=>{
+          navigate('/signin');
+        }}>로그인</span>|<span style={{cursor:'pointer'}} onClick={()=>{
+          navigate('/signUp');
+        }}>회원가입</span>
+        </div>
+        }
+        
       </div>
       <div className='header-bar'>
         <img src={k_logo} style={{width:'200px', height:'75px', margin:'0 auto', cursor:'pointer'}} onClick={()=>{
@@ -159,9 +186,7 @@ function App() {
           <Overlay target={target.current} show={show} placement="left">
         {(props) => (
           <Tooltip id="overlay-example" {...props}>
-            <label>
-              <textarea placeholder='글 내용 작성'></textarea>
-            </label>
+            <input type='text' id='searchtextbar'/>
           </Tooltip>
         )}
       </Overlay>
@@ -301,6 +326,12 @@ function App() {
             <Video002 />
           }/>
         </Route>
+        <Route path='/signUp' element={
+          <SignUp/>
+        }/>
+        <Route path='/signin' element={
+          <Signin showHeaderBar={showHeaderBar}/>
+        }/>
         
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
