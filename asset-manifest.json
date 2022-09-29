@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/project0919/static/css/main.b9a0ad33.css",
+    "main.js": "/project0919/static/js/main.2fb1e23e.js",
+    "static/js/787.c3882295.chunk.js": "/project0919/static/js/787.c3882295.chunk.js",
+    "static/media/뉴스1.PNG": "/project0919/static/media/뉴스1.b3da62caecf9cec686c5.PNG",
+    "static/media/배너사진2.PNG": "/project0919/static/media/배너사진2.2d7d1dba83cea3e6ae85.PNG",
+    "static/media/뉴스2.PNG": "/project0919/static/media/뉴스2.e5bd3e3b004d02b11e48.PNG",
+    "static/media/뉴스(큰화면).PNG": "/project0919/static/media/뉴스(큰화면).ba32c4ab1aa77c62b237.PNG",
+    "static/media/blue-g0126102fa_1280.png": "/project0919/static/media/blue-g0126102fa_1280.8f406cf00a68ede43947.png",
+    "static/media/디자인_배너.PNG": "/project0919/static/media/디자인_배너.81c763da18e143dabc51.PNG",
+    "static/media/Ulsan_Hyundai_FC.svg.png": "/project0919/static/media/Ulsan_Hyundai_FC.svg.a9a8d794fc851ab12569.png",
+    "static/media/KakaoTalk_20220316_113356537_20220316_050246.png": "/project0919/static/media/KakaoTalk_20220316_113356537_20220316_050246.26910823231ae3d45c68.png",
+    "static/media/emblem_K29.png": "/project0919/static/media/emblem_K29.b43e73fda34a04a6e9bc.png",
+    "static/media/Jeju_United_FC.svg.png": "/project0919/static/media/Jeju_United_FC.svg.aace8acb4baa18bd9c9d.png",
+    "static/media/456.PNG": "/project0919/static/media/456.a2381aa26098c9719e13.PNG",
+    "static/media/축구공.png": "/project0919/static/media/축구공.2e417ef4cff86e63ea2e.png",
+    "static/media/123.JPG": "/project0919/static/media/123.ce8efebcc01b3da57c0a.JPG",
+    "index.html": "/project0919/index.html",
+    "main.b9a0ad33.css.map": "/project0919/static/css/main.b9a0ad33.css.map",
+    "main.2fb1e23e.js.map": "/project0919/static/js/main.2fb1e23e.js.map",
+    "787.c3882295.chunk.js.map": "/project0919/static/js/787.c3882295.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9a0ad33.css",
+    "static/js/main.2fb1e23e.js"
+  ]
+}
