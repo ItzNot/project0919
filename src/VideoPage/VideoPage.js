@@ -14,6 +14,11 @@ function VideoPage() {
         viPath:'/videoPage/vi002',
         viImg:"https://i.ytimg.com/vi/5K3jNmx2IWo/maxresdefault.jpg",
         viText:'[하나원큐 K리그1] R33 울산 vs 수원FC 하이라이트 (2022-09-18)'
+    },
+    {
+        viPath:'/videoPage/vi003',
+        viImg:'https://i.ytimg.com/vi/JaUOX9jUJ8I/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxcPNseMVNEF-Xxd9lP4x5aHwK2w',
+        viText:'[하나원큐 K리그1 2022] 33라운드 골모음 | ALL GOALS of K LEAGUE1 R33'
     }
     ]);
     return(

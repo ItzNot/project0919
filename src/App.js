@@ -27,6 +27,7 @@ import NewsPageLeague from './NewsPage/NewsPageLeague.js';
 import VideoPage from './VideoPage/VideoPage.js';
 import Video001 from './VideoPage/Video001.js';
 import Video002 from './VideoPage/Video002.js';
+import Video003 from './VideoPage/Video003.js';
 import SignUp from './registIdPw/SignUp.js';
 import Signin from './registIdPw/Signin.js'
 
@@ -324,6 +325,9 @@ function App() {
         }/>
           <Route path='vi002' element={
             <Video002 />
+          }/>
+          <Route path='vi003' element={
+            <Video003 />
           }/>
         </Route>
         <Route path='/signUp' element={
