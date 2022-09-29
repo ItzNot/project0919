@@ -18,7 +18,7 @@ function VideoPage() {
     {
         viPath:'/videoPage/vi003',
         viImg:'https://i.ytimg.com/vi/JaUOX9jUJ8I/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDxcPNseMVNEF-Xxd9lP4x5aHwK2w',
-        viText:'[하나원큐 K리그1 2022] 33라운드 골모음 | ALL GOALS of K LEAGUE1 R33'
+        viText:'[하나원큐 K리그1 2022] 33라운드 골모음'
     }
     ]);
     return(
@@ -34,17 +34,22 @@ function VideoPage() {
             <Outlet/>
             <div className='body-videolist'>
                 {videoInfo.map((data, i)=> {
-                    <Card style={{ width: '300px', height:'150px' }} onClick={()=>{
-                        navigate(data.viPath);
-                    }}>
-                        <Card.Img style={{height:'150px'}} variant="top" src={data.viImg} />
-                        <Card.Body>
-                            <Card.Text>
-                                {data.viText}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
+                    return (
+                        <Card style={{ width: '300px', height:'150px', cursor:'pointer' }} onClick={()=>{
+                            navigate(data.viPath);
+                        }}>
+                            <Card.Img style={{height:'150px'}} variant="top" src={data.viImg} />
+                            <Card.Body>
+                                <Card.Text>
+                                    {data.viText}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    )
+                    
                 })}
+                
+
             </div>
             
             

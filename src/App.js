@@ -19,6 +19,7 @@ import UlsanPage from './IntroPage/UlsanPage.js';
 import k_logo from "./images/123.JPG";
 import EventPage from "./EventPage/EventPage.js";
 import CreateText from './EventPage/CreateText';
+import EventComment from './EventPage/EventComment';
 import NewsPage from './NewsPage/NewsPage.js';
 import NewsPageAll from './NewsPage/NewsPageAll.js';
 import NewsPageClub from './NewsPage/NewsPageClub.js';
@@ -143,7 +144,7 @@ function App() {
       <div className="header-menubar">
         <ul className={ScrollActive ? "fixed-menu" : "menu"}>
             {ScrollActive ? <img src={k_logoMini} style={{width:'32px', height:'32px', float:'left', cursor:'pointer'}} onClick={()=>{
-              window.location.href = '/';
+              window.location.href = '/project0919';
             }}></img> : null}
             <li><a style={{cursor:'pointer'}} onClick={()=>{
               navigate('/newsPage/all');
@@ -178,8 +179,12 @@ function App() {
             navigate('/EventPage');
           }}>이벤트</a>
           <ul className='down-menu'>
-              <li>승부 예측</li>
-              <li>출석 이벤트</li>
+              <li><a style={{cursor:'pointer'}} onClick={()=>{
+            navigate('/EventPage');
+          }}>승부 예측</a></li>
+              <li><a style={{cursor:'pointer'}} onClick={()=>{
+            navigate('/EventComment');
+          }}>진행 이벤트</a></li>
             </ul>
           </li>
           <li style={{width:"18rem"}}>About K League</li>
@@ -285,6 +290,10 @@ function App() {
                 </div>
               </div>
             </div>
+            <div className='bottomName'>
+              <a>제작자 : 권성민 k리그 소식 및 이벤트 소개를 위한 페이지제작 1차(리액트)</a><br/>
+              <a>출처 및 참고자료 : K리그 공식사이트 https://www.kleague.com/</a>
+            </div>
           </div>  
         }/>
         <Route path='/EventPage' element={
@@ -292,6 +301,9 @@ function App() {
         }/>
         <Route path='/EventPage/CreateText' element={
             <CreateText/>
+        }/>
+        <Route path='/EventComment' element={
+          <EventComment evenBanner2={evenBanner2}/>
         }/>
         <Route path='/teamUlsan' element={
           <UlsanPage/>

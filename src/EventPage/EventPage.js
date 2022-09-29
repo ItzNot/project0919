@@ -1,6 +1,6 @@
 import './EventPage.css';
 import {Navigate, Outlet, useNavigate} from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 function EventPage({evenBanner1}) {
@@ -15,6 +15,7 @@ function EventPage({evenBanner1}) {
     let month = today.getMonth()+1;
     let day = today.getDate();
     let comToday = new Date(`${year}-${month}-${day}`);
+    let isLogin = JSON.parse(localStorage.getItem('boolData'));
     if(evenData==null) evenData = []; 
     return (
         <div>
@@ -22,7 +23,7 @@ function EventPage({evenBanner1}) {
 
                 <div className='bannner-PicBox'>
                     <h3>이벤트</h3>
-                    <p>K리그 경기 승부 예측을 할 수 있는 이벤트 페이지입니다.</p>
+                    <p>K리그 이벤트에 참여 및 확인할 수 있는 페이지입니다</p>
                 </div>
             </div>
             <div className="main-PicArea">
@@ -74,8 +75,14 @@ function EventPage({evenBanner1}) {
                             <td></td>
                             <td></td>
                             <td onClick={()=>{
+                                if(isLogin !== true) {
+                                    navigate("/signin");
+                            }
+                            else {
                                 localStorage.removeItem('json');
                                 navigate("/EventPage");
+                            }
+                                
                             }}><button>일괄삭제</button></td>
                         </tr>
                     </tbody>
@@ -83,9 +90,13 @@ function EventPage({evenBanner1}) {
             </div>
             <div className="bottomCreateText">
                 <button className="createTextbutton" onClick={()=>{
-                    // setShowInputList(true);
-                    // localStorage.clear();
-                    navigate("/EventPage/CreateText")
+                    if(isLogin !== true) {
+                        navigate("/signin");
+                    }
+                    else {
+                        navigate("/EventPage/CreateText")
+                    }
+                    
                 }}>글쓰기</button>
 
             </div>
