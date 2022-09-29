@@ -60,7 +60,8 @@ function EventPage({evenBanner1}) {
                             return(
                                 <tr>
                                 <td>{evenData.length-i}</td>
-                                <td style={{backgroundColor:'gray', color:'white'}}>{endDay < comToday ? "마감" : "진행"}</td>
+                                {endDay < comToday ? <td style={{backgroundColor:'gray', color:'white'}}>마감</td> 
+                                : <td style={{color:'red'}}>진행</td>}
                                 <td>{data.title}</td>
                                 <td>{data.startDate} ~ {data.finDate}</td>
                                 <td>0</td>
