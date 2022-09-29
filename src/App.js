@@ -105,7 +105,7 @@ function App() {
   return (
     <div className="App">
       <div className='header-minbar'>
-        {showHeaderBar === isData?
+        {isData !== true?
         <div>
         <span style={{cursor:'pointer'}} onClick={()=>{
         localStorage.setItem('boolData', false);
