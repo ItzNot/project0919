@@ -1,8 +1,21 @@
 import './VideoPage.css';
 import {Card, Button} from 'react-bootstrap';
 import {Outlet, useNavigate} from 'react-router-dom';
+import { useState } from 'react';
 function VideoPage() {
     let navigate = useNavigate();
+    let [videoInfo, setVideoInfo] = useState([
+    {
+        viPath:'/videoPage/vi001',
+        viImg:"https://i.ytimg.com/vi/pW0m_TRt1xU/maxresdefault.jpg",
+        viText:'[하나원큐 K리그1] R33 강원 vs 제주 하이라이트 (2022-09-18)'
+    },
+    {
+        viPath:'/videoPage/vi002',
+        viImg:"https://i.ytimg.com/vi/5K3jNmx2IWo/maxresdefault.jpg",
+        viText:'[하나원큐 K리그1] R33 울산 vs 수원FC 하이라이트 (2022-09-18)'
+    }
+    ]);
     return(
         <div>
             <div className="bannner-PicBox">
@@ -15,27 +28,18 @@ function VideoPage() {
             </div>
             <Outlet/>
             <div className='body-videolist'>
-                <Card style={{ width: '300px', height:'150px' }} onClick={()=>{
-                    navigate('/videoPage/vi001');
-                }}>
-                    <Card.Img style={{height:'150px'}} variant="top" src="https://i.ytimg.com/vi/pW0m_TRt1xU/maxresdefault.jpg" />
-                    <Card.Body>
-                        <Card.Text>
-                            [하나원큐 K리그1] R33 강원 vs 제주 하이라이트 (2022-09-18)
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: '300px', height:'150px' }} onClick={()=>{
-                    navigate('/videoPage/vi002');
-                }}>
-                    <Card.Img style={{height:'150px'}} variant="top" src="https://i.ytimg.com/vi/5K3jNmx2IWo/maxresdefault.jpg" />
-                    <Card.Body>
-                        <Card.Text>
-                        [하나원큐 K리그1] R33 울산 vs 수원FC 하이라이트 (2022-09-18)
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-                
+                {videoInfo.map((data, i)=> {
+                    <Card style={{ width: '300px', height:'150px' }} onClick={()=>{
+                        navigate(data.viPath);
+                    }}>
+                        <Card.Img style={{height:'150px'}} variant="top" src={data.viImg} />
+                        <Card.Body>
+                            <Card.Text>
+                                {data.viText}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                })}
             </div>
             
             
