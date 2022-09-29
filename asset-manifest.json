@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project0919/static/css/main.b9a0ad33.css",
-    "main.js": "/project0919/static/js/main.45f3fef5.js",
+    "main.css": "/project0919/static/css/main.47c7ac5d.css",
+    "main.js": "/project0919/static/js/main.89b3e2fc.js",
     "static/js/787.c3882295.chunk.js": "/project0919/static/js/787.c3882295.chunk.js",
     "static/media/뉴스1.PNG": "/project0919/static/media/뉴스1.b3da62caecf9cec686c5.PNG",
     "static/media/배너사진2.PNG": "/project0919/static/media/배너사진2.2d7d1dba83cea3e6ae85.PNG",
@@ -17,12 +17,12 @@
     "static/media/축구공.png": "/project0919/static/media/축구공.2e417ef4cff86e63ea2e.png",
     "static/media/123.JPG": "/project0919/static/media/123.ce8efebcc01b3da57c0a.JPG",
     "index.html": "/project0919/index.html",
-    "main.b9a0ad33.css.map": "/project0919/static/css/main.b9a0ad33.css.map",
-    "main.45f3fef5.js.map": "/project0919/static/js/main.45f3fef5.js.map",
+    "main.47c7ac5d.css.map": "/project0919/static/css/main.47c7ac5d.css.map",
+    "main.89b3e2fc.js.map": "/project0919/static/js/main.89b3e2fc.js.map",
     "787.c3882295.chunk.js.map": "/project0919/static/js/787.c3882295.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9a0ad33.css",
-    "static/js/main.45f3fef5.js"
+    "static/css/main.47c7ac5d.css",
+    "static/js/main.89b3e2fc.js"
   ]
 }
