@@ -38,7 +38,7 @@ function EventPage({evenBanner1}) {
                     cursor: 'pointer'
                     
                 }} onClick={()=>{
-                    window.location.href = '/EventPage';
+                    window.location.href = '/project0919/EventPage';
                 }}/>
             </div>
             <div className='bottomTable'>
