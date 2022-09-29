@@ -174,7 +174,7 @@ function App() {
             </ul>
           </li>
           <li><a style={{cursor:'pointer'}} onClick={()=>{
-            window.location.href = '/EventPage';
+            navigate('/EventPage');
           }}>이벤트</a>
           <ul className='down-menu'>
               <li>승부 예측</li>
@@ -200,7 +200,7 @@ function App() {
                 return (
                   <Carousel.Item>
                     <img src={data.bannerImgPath} className='eventBanner' onClick={()=>{
-                      window.location.href = data.bannerUrl;
+                      navigate(data.bannerUrl); 
                     }}/>
                   </Carousel.Item>
                 )
