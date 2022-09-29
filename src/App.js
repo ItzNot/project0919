@@ -123,7 +123,7 @@ function App() {
       </div>
       <div className='header-bar'>
         <img src={k_logo} style={{width:'200px', height:'75px', margin:'0 auto', cursor:'pointer'}} onClick={()=>{
-          window.location.href = '/';
+          navigate('/');
         }}/> 
         <Container style={{display:'flex', justifyContent:'flex-end'}}>
           <Row xs="auto">
