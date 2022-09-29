@@ -94,6 +94,7 @@ function App() {
   const target = useRef(null);
   let [showHeaderBar, setShowHeaderBar] = useState(false);
   let isData = localStorage.getItem('boolData');
+  
   useEffect(()=>{
     if(showHeaderBar !== true) {
       setShowHeaderBar(isData);
@@ -105,7 +106,7 @@ function App() {
   return (
     <div className="App">
       <div className='header-minbar'>
-        {isData !== true?
+        {showHeaderBar === isData?
         <div>
         <span style={{cursor:'pointer'}} onClick={()=>{
         localStorage.setItem('boolData', false);
