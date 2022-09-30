@@ -30,7 +30,7 @@ import Video001 from './VideoPage/Video001.js';
 import Video002 from './VideoPage/Video002.js';
 import Video003 from './VideoPage/Video003.js';
 import SignUp from './registIdPw/SignUp.js';
-import Signin from './registIdPw/Signin.js'
+import Signin from './registIdPw/Signin.js';
 
 
 function App() {
